@@ -2,7 +2,7 @@ name := "mirror"
 organization := "com.example.akka-stream-kafka"
 scalaVersion := "2.12.12"
 
-libraryDependencies += "com.typesafe.akka" %% "akka-stream-kafka" % "0.14"
+libraryDependencies += "com.typesafe.akka" %% "akka-stream-kafka" % "2.0.5"
 libraryDependencies += "ch.qos.logback"     % "logback-classic"   % "1.2.2" % Runtime
 libraryDependencies += "joda-time"          % "joda-time"         % "2.10.8"
 
