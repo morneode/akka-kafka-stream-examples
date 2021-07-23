@@ -3,8 +3,7 @@ package com.example.ask
 import java.util.UUID
 
 import akka.actor.ActorSystem
-import akka.kafka.scaladsl.Consumer.DrainingControl
-import akka.kafka.scaladsl.{Committer, Consumer}
+import akka.kafka.scaladsl.Consumer
 import akka.kafka.{CommitterSettings, ConsumerSettings, Subscriptions}
 import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.Sink
@@ -40,7 +39,7 @@ object SimpleConsumer extends App {
   val committerSettings = CommitterSettings(system)
   val done = Consumer
     .plainSource(consumerSettings, Subscriptions.topics(topic))
-    .runWith(Sink.foreach(println))
+    .runWith(Sink.foreach(msg => println(s"${msg.value()}")))
 
   done.onComplete {
     case Success(_)   => println("Done"); system.terminate()
